@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { createPortal } from 'react-dom';
+import { FaSearchPlus, FaTimes } from 'react-icons/fa';
 import PageHeader from '../components/PageHeader';
 
 const GallerySection = () => {
@@ -44,6 +46,36 @@ const GallerySection = () => {
         document.body.style.overflow = 'auto'; // Restore scrolling
     };
 
+    // Lightbox Modal using Portal to escape transform context
+    const LightboxModal = () => {
+        if (!selectedImage) return null;
+        
+        return createPortal(
+            <div
+                className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+                onClick={closeLightbox}
+            >
+                <button
+                    className="absolute top-4 right-4 text-white hover:text-gray-300 z-50 p-2"
+                    onClick={closeLightbox}
+                >
+                    <FaTimes className="w-8 h-8" />
+                </button>
+                <div
+                    className="relative max-w-5xl max-h-[90vh] w-full flex items-center justify-center"
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    <img
+                        src={selectedImage}
+                        alt="Gallery Detail"
+                        className="max-w-full max-h-[85vh] object-contain rounded-sm shadow-2xl border-4 border-white"
+                    />
+                </div>
+            </div>,
+            document.body
+        );
+    };
+
     return (
         <>
             <PageHeader
@@ -74,9 +106,7 @@ const GallerySection = () => {
                                     onClick={() => openLightbox(image)}
                                 >
                                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 z-10 flex items-center justify-center">
-                                        <svg className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                                        </svg>
+                                        <FaSearchPlus className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300" />
                                     </div>
                                     <img
                                         src={image}
@@ -90,32 +120,8 @@ const GallerySection = () => {
                 </section>
             ))}
 
-            {/* Lightbox Modal */}
-            {selectedImage && (
-                <div
-                    className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 transition-opacity duration-300"
-                    onClick={closeLightbox}
-                >
-                    <button
-                        className="absolute top-4 right-4 text-white hover:text-gray-300 z-50 p-2"
-                        onClick={closeLightbox}
-                    >
-                        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                    <div
-                        className="relative max-w-5xl max-h-[90vh] w-full flex items-center justify-center"
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        <img
-                            src={selectedImage}
-                            alt="Gallery Detail"
-                            className="max-w-full max-h-[85vh] object-contain rounded-sm shadow-2xl border-4 border-white"
-                        />
-                    </div>
-                </div>
-            )}
+            {/* Lightbox Modal via Portal */}
+            <LightboxModal />
         </>
     );
 };

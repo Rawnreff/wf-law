@@ -1,4 +1,4 @@
-import React from 'react';
+import { FaBuilding } from 'react-icons/fa';
 
 const ClientsSection = () => {
     const clients = [
@@ -20,15 +20,17 @@ const ClientsSection = () => {
                     Klien Jasa Retainer (In House Lawyer) Kami
                 </h3>
 
-                {/* Client List - Two Columns */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-4 max-w-4xl mx-auto">
+                {/* Client Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
                     {clients.map((client, index) => (
                         <div
                             key={index}
-                            className="flex items-center gap-3 text-white/90"
+                            className="bg-white/10 border border-white/20 rounded-xl p-4 hover:bg-white/20 transition-all duration-300"
                         >
-                            <span className="w-2 h-2 bg-white rounded-full flex-shrink-0"></span>
-                            <span className="text-sm md:text-base">{client}</span>
+                            <div className="flex items-center gap-3">
+                                <FaBuilding className="w-5 h-5 text-white/70" />
+                                <span className="text-white text-sm">{client}</span>
+                            </div>
                         </div>
                     ))}
                 </div>

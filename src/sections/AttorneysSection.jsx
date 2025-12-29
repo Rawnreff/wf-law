@@ -1,5 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaArrowRight } from 'react-icons/fa';
 
 const AttorneysSection = () => {
     const lawyers = [
@@ -62,9 +62,7 @@ const AttorneysSection = () => {
                         className="bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 uppercase text-sm tracking-wide flex items-center gap-2"
                     >
                         OUR TEAM
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
+                        <FaArrowRight className="w-4 h-4" />
                     </Link>
                 </div>
 

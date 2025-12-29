@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const HeroSection = () => {
     const banners = [
@@ -101,18 +102,14 @@ const HeroSection = () => {
                 className="absolute left-0 md:left-8 top-1/2 -translate-y-1/2 z-20 w-16 h-16 flex items-center justify-center group hover:bg-white/5 transition-colors"
                 aria-label="Previous Slide"
             >
-                <svg className="w-10 h-10 text-white/50 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M15 19l-7-7 7-7" />
-                </svg>
+                <FaChevronLeft className="w-8 h-8 text-white/50 group-hover:text-white transition-colors" />
             </button>
             <button
                 onClick={nextSlide}
                 className="absolute right-0 md:right-8 top-1/2 -translate-y-1/2 z-20 w-16 h-16 flex items-center justify-center group hover:bg-white/5 transition-colors"
                 aria-label="Next Slide"
             >
-                <svg className="w-10 h-10 text-white/50 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M9 5l7 7-7 7" />
-                </svg>
+                <FaChevronRight className="w-8 h-8 text-white/50 group-hover:text-white transition-colors" />
             </button>
 
             {/* Slide Indicators */}
