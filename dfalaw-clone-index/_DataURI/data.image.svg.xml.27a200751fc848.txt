@@ -1,0 +1,1 @@
+data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width='1600'%20height='900'%20viewBox=%270%200%201600%20900%27%3E%3C/svg%3E

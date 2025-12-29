@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles matching clone */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Open Sans', 'Poppins', sans-serif;
+  background-color: #F7F6F6;
+  color: #333333;
+}
+
+/* Heading font */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'DM Serif Display', 'Cormorant Garamond', serif;
+}
+
+/* Large number styling (for sections like 01, 02, etc.) */
+.large-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 4rem;
+  font-weight: 400;
+  color: #1C07CA;
+  line-height: 1;
+}
+
+@media (min-width: 768px) {
+  .large-number {
+    font-size: 6rem;
+  }
+}
+
+/* Button styles matching clone */
+.btn-primary {
+  @apply bg-primary text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 hover:bg-primary-dark;
+}
+
+.btn-outline {
+  @apply border-2 border-primary text-primary font-semibold py-3 px-8 rounded-full transition-all duration-300 hover:bg-primary hover:text-white;
+}
+
+/* Card hover effects */
+.card-hover {
+  @apply transition-all duration-300 hover:transform hover:-translate-y-1;
+}
+
+/* Image rounded corners matching clone */
+.img-rounded {
+  @apply rounded-2xl overflow-hidden;
+}
+
+/* Section padding matching clone */
+.section-padding {
+  @apply py-16 md:py-24;
+}
+
+/* Dark section background - now uses light background */
+.section-dark {
+  background-color: #F7F6F6;
+}
+
+/* Light section background - slightly off-white */
+.section-light {
+  @apply bg-gray-50;
+}
